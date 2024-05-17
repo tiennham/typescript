@@ -1,30 +1,25 @@
-// lesson 27: function
+// lesson 28: function return type
 
-// case normal
-
-function sum(a: number, b: number) {
-    return a + b;
+function sum_wrong_type(a: number, b: number) {
+    return "abc" // no error
 }
 
-console.log("sum function normal: ", sum(5, 1))
+console.log("sum with wrong type: ", sum_wrong_type(11, 22))
 
-// arrow function
-// https://viblo.asia/p/su-khac-biet-giua-arrow-function-va-function-trong-javascript-07LKXpw2KV4
-// khong nen dung arrow function trong phuong thuc cua object, 
-// vi arrow fucntion khong co bind & this thay doi kho kiem soat
-// dung trong cac ham filter, map cua array thi tien dung, ngan gon hon
-// arrow function co the khong can return
+let new_number = 10
+new_number = sum_wrong_type(33, 22) // error  because string cannot + with number 
 
-const sum_arrow = (a: number, b: number) => a + b
+console.log("new number : ", new_number)
 
-console.log("arrow function: ", sum_arrow(22, 33))
+function sum_wrong_type_2(a: number, b: number): number {
+    return "abc" // error
+}
 
+console.log("sum with wrong type: ", sum_wrong_type_2(11, 22))
 
-let init_array = [2, 3, 4, 5, 6]
+let new_number_2 = 10
+new_number_2 = sum_wrong_type_2(33, 22) // no error
 
-let double_array = init_array.map(item => item * 2)
-
-console.log("Init array: ", init_array)
-console.log("Double array: ", double_array)
+console.log("new number 2 : ", new_number_2)
 
 export { }
