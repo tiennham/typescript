@@ -1,38 +1,14 @@
-// lesson 25: break keyword
+// lesson 26: continue keyword
 
-let break_point = 5
+let ignore_guy = "cung dau"
 
-for (let i = 0; i < 10; i++) {
-    console.log(">>> i: ", i)
-    if (i == 5) {
-        break
+let team_guys = ["ninh than", "cung dau", "xinh dep", "culi", "leader"]
+
+for (let i = 0; i < team_guys.length; i++) {
+    if (team_guys[i] == 'cung dau') {
+        continue
     }
+    console.log(`${team_guys[i]}, You have 1000$ for your efforce!!`)
 }
 
-let products = [
-    { name: "Mobile", price: 500 },
-    { name: "Tablet", price: 1000 },
-    { name: "Computer", price: 99999 },
-]
-
-let product = products[1]
-
-switch (product.name) {
-    case "Mobile":
-        console.log(`Case Mobile`)
-        console.log(`${product.name} price: `, product.price)
-        break
-    case "Tablet":
-        console.log(`Case Tablet`)
-        console.log(`${product.name} price: `, product.price)
-        break
-    case "Computer":
-        console.log(`Case Computer`)
-        console.log(`${product.name} price: `, product.price)
-        break
-    default:
-        console.log(`Case default`)
-        console.log("We don't have those product")
-
-}
 export { }
