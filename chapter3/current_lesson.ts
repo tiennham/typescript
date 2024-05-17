@@ -1,22 +1,38 @@
-// lesson 24: do while loop 
-let day = Math.floor(Math.random() * 7) + 1
-let n = 1
-do {
-    console.log(`\n`)
-    console.log(`//==== Throw the dices ${n} times ====`)
-    if (day == 7) {
-        console.log(`Today is Sunday, let take a break.`)
-        break
-    }
-    let dice1 = Math.floor(Math.random() * 6) + 1
-    console.log(`Dice 1: ${dice1}`)
-    let dice2 = Math.floor(Math.random() * 6) + 1
-    console.log(`Dice 2: ${dice2}`)
-    if (dice1 == dice2) { // This is the purpose for while loop, break in the body
-        console.log(`Bye loop`)
-        break
-    }
-    n++
-} while (true)
+// lesson 25: break keyword
 
+let break_point = 5
+
+for (let i = 0; i < 10; i++) {
+    console.log(">>> i: ", i)
+    if (i == 5) {
+        break
+    }
+}
+
+let products = [
+    { name: "Mobile", price: 500 },
+    { name: "Tablet", price: 1000 },
+    { name: "Computer", price: 99999 },
+]
+
+let product = products[1]
+
+switch (product.name) {
+    case "Mobile":
+        console.log(`Case Mobile`)
+        console.log(`${product.name} price: `, product.price)
+        break
+    case "Tablet":
+        console.log(`Case Tablet`)
+        console.log(`${product.name} price: `, product.price)
+        break
+    case "Computer":
+        console.log(`Case Computer`)
+        console.log(`${product.name} price: `, product.price)
+        break
+    default:
+        console.log(`Case default`)
+        console.log("We don't have those product")
+
+}
 export { }
