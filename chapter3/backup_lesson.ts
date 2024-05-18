@@ -266,3 +266,15 @@ new_number_2 = sum_wrong_type_2(33, 22) // no error
 console.log("new number 2 : ", new_number_2)
 
 export { }
+
+// lesson 29: optional parameter
+
+function sum(a: number, b: number, c?: number) {
+    if (c) return a + b + c
+    return a + b;
+}
+
+console.log(">>> sum(6, 7): ", sum(6, 7))
+// console.log(">>> sum(): ", sum()) // error
+
+export { }
