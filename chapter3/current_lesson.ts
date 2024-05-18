@@ -1,26 +1,14 @@
-// lesson 34: modifier
+// lesson 35: modifier readonly
 
-class Employee {
-    private empcode: string;
-    empName: string;
-
-    constructor(code: string, name: string) {
-        this.empName = name
-        this.empcode = code
+class Person {
+    readonly birthDate: Date;
+    constructor(birth_date: Date) {
+        this.birthDate = birth_date
     }
 }
 
-class SaleEmployee extends Employee {
-    protected department: string
-
-    constructor(code: string, name: string, department: string) {
-        super(code, name)
-        this.department = department
-    }
-}
-
-let sale_emp = new SaleEmployee("111", "Tien", "IT")
-
-sale_emp.department = "Sale" // error
+let person = new Person(new Date(1985, 12, 31))
+console.log(">>> person.birthDate: ", person.birthDate)
+// person.birthDate = new Date(1998, 1, 12) // error
 
 export { }
