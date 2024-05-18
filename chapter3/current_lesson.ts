@@ -1,31 +1,50 @@
-// lesson 31: rest parameter
+// lesson 31: overload function
 
-// Note: even param is number[], but you must pass the parameter as they are seperate item
-// Ex: getTotal(6, 7, 8) -> 7, 8 is 'an array'
+// We want to combine addNumber and concateString
 
-function getTotal(...number_array: number[]): number {
-    let total = 0
-    number_array.forEach((i) => total += i)
-    return total
+function addNumber(a: number, b: number): number {
+    return a + b
 }
 
-// console.log(">>> getTotal(6, 7, 8): ", getTotal(6, 7, 8))
-
-function multipleItems(times: number, ...number_array: number[]): number[] {
-    let new_array = number_array.map((i) => i * times)
-    return new_array
+function concateString(a: string, b: string): string {
+    return a + b
 }
 
-console.log(">>> multipleItems(10, 2,3,4,5,6): ", multipleItems(10, 2, 3, 4, 5, 6))
+// And here is how we do
+function addOrConcate(a: number, b: number): number;
 
-function greetingMembers(init_message: string, ...name_array: string[]): string {
-    let greeting_str = init_message + name_array.join(", ")
-    return greeting_str
+function addOrConcate(a: string, b: string): string;
+
+function addOrConcate(a: any, b: any): number | string {
+    return a + b
 }
 
-console.log(
-    ">>> greetingMembers('Hello', 'Jame', 'Schoch', 'Barry', 'Joe'): ",
-    greetingMembers('Hello: ', 'Jame', 'Schoch', 'Barry', 'Joe')
-)
+console.log(">>> check addOrConcate: ", addOrConcate(6, 9), addOrConcate("Tien", " & TypeScrip"))
+
+
+class CountThing {
+    private current: number = 0;
+    count(): number;
+    count(target: number): number[];
+    count(target?: number): number | number[] {
+        if (target) {
+            let values: number[] = []
+            for (let i = this.current; i <= target; i++) {
+                // console.log(">>> i: ", i)
+                values.push(i)
+            }
+            console.log("Values: ", values)
+            return values
+        }
+        console.log("increase 1 for this.current: ", this.current)
+        return ++this.current
+    }
+}
+
+let count_obj = new CountThing();
+count_obj.count() // this.current = 0
+count_obj.count() // this.current = 1
+count_obj.count() // this.current = 2
+count_obj.count(10) // this.current = 3, 4, 5, 6, 7, 8, 9, 10
 
 export { }
