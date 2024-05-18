@@ -1,25 +1,26 @@
-// lesson 32: class
+// lesson 34: modifier
 
-class Person {
-    ssn: string;
-    firstName: string;
-    lastName: string;
+class Employee {
+    private empcode: string;
+    empName: string;
 
-    constructor(ssn: string, first_name: string, last_name: string) {
-        this.firstName = first_name
-        this.lastName = last_name
-        this.ssn = ssn
-    }
-
-    getFullName() {
-        return `${this.firstName} ${this.lastName}`
+    constructor(code: string, name: string) {
+        this.empName = name
+        this.empcode = code
     }
 }
 
-let person = new Person("123", "Tien", "Nham")
+class SaleEmployee extends Employee {
+    protected department: string
 
-console.log(">>> person: ", person)
-console.log(">>> person.getFullName: ", person.getFullName())
+    constructor(code: string, name: string, department: string) {
+        super(code, name)
+        this.department = department
+    }
+}
 
+let sale_emp = new SaleEmployee("111", "Tien", "IT")
+
+sale_emp.department = "Sale" // error
 
 export { }
