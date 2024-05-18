@@ -1,0 +1,1 @@
+let_myarr = ["python", "java", "js"]
