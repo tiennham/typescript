@@ -1,41 +1,39 @@
-// lesson 36: modifier readonly
+// lesson 37: inheritance
 
 class Person {
-    private _age: number;
-    fristName: string;
+    firstName: string;
     lastName: string;
 
-    constructor(_age: number, fristName: string, lastName: string) {
-        this._age = _age
-        this.fristName = fristName
+    constructor(firstName: string, lastName: string) {
+        this.firstName = firstName
         this.lastName = lastName
     }
 
-    getAge() {
-        return this._age
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
     }
 
-    get age() {
-        return this._age
+    describe() {
+        return `This is describe`
     }
 
-    set age(age_number: number) {
-        if (age_number < 0 || age_number > 150) {
-            throw Error("Invalid age number")
-        }
-        this._age = age_number
+}
+
+class Employee extends Person {
+    private jobTitle: string;
+
+    constructor(fristName: string, lastName: string, jobTitle: string) {
+        super(fristName, lastName)
+        this.jobTitle = jobTitle
+    }
+
+    describe(): string {
+        return `${super.describe()} + for Employee class`
     }
 }
 
-let person = new Person(22, "Janet", "Wattson")
-console.log("person: ", person)
-console.log("person.age: ", person.age)
-// person.age = 200 // error
-// console.log("person: ", person)
-// person.age = -1 // error
+let employee = new Employee("Tien", "Nham", "Data Engineering")
+console.log(">>> employee.describe", employee.describe())
 
-// console.log("person: ", person)
-person.age = 99
-console.log("person age 99: ", person)
 
 export { }
