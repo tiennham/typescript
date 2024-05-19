@@ -1,25 +1,37 @@
-// lesson 38: static
+// lesson 39: abstract class
 
-class Circle {
-    static pi = 3.14
-    radius: number
-    constructor(radius: number) {
-        this.radius = radius
-    }
+abstract class Employee {
 
-    static calculateArea(radius: number) {
-        return this.pi * radius * radius
+    constructor(private firstName: string, private lastName: string) { }
+
+    abstract getSalary(): number;
+
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
     }
 }
 
-console.log(">>> pi: ", Circle.pi)
+class fulltimeEmployee extends Employee {
+    // firstName: string;
+    // lastName: string;
+    private salary: number;
 
-console.log("Area 10: ", Circle.calculateArea(10))
+    constructor(firstName: string, lastName: string, salary: number) {
+        super(firstName, lastName)
+        // this.firstName = firstName
+        // this.lastName = lastName
+        this.salary = salary
+    }
 
-let circle = new Circle(10)
+    getSalary(): number {
+        return this.salary
+    }
+}
 
-// console.log(">>> circle 10 pi: ", circle.pi) // error
-// console.log(">>> circle 10 area: ", circle.calculateArea(10)) // error
+let fulltime_employee = new fulltimeEmployee("Tien", "Nham", 1000)
 
+console.log(">>> fulltime_employee: ", fulltime_employee)
+console.log(">>> fulltime_employee getSalary: ", fulltime_employee.getSalary())
+console.log(">>> fulltime_employee getFullName: ", fulltime_employee.getFullName())
 
 export { }
